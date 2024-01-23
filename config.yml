@@ -142,13 +142,17 @@ params:
   # 
   # For help, see the wiki:
   # https://github.com/cstate/cstate/wiki/Customization
+  #categories:
+  #  - name: Waterwolf Club
+  #    url: https://waterwolf.club
+  #  - name: Waterwolf Town
+  #    url: https://waterwolf.town
+  #  - name: Waterwolf Club
+  #    url: https://waterwolf.club
   categories:
-    - name: North Coast
-      description: The main servers are located here.
-      closed: true
-    - name: Empty Category
-    - name: Uncategorized
-      untitled: true
+    - name: Websites
+    - name: Stream
+    - name: DevOops
 
   # These are your systems. Change them to
   # change the amount of components.
@@ -159,10 +163,10 @@ params:
   # https://github.com/cstate/cstate/wiki/Customization
   systems:
     - name: Waterwolf Club
-      category: Website
+      category: Websites
       link: https://waterwolf.club
     - name: Waterwolf Town
-      category: Website
+      category: Websites
       link: https://waterwolf.town
     - name: Relay 1
       category: Stream
@@ -173,6 +177,16 @@ params:
     - name: Relay 3
       category: Stream
       link: https://stream3.waterwolf.live
+    - name: Waterwolf Dev
+      category: DevOops
+      link: https://waterwolf.dev
+    - name: Wolfhub
+      category: DevOops
+      link: https://wolfhub.waterwolf.dev
+    - name: Purriku.com
+      category: Websites
+      description: Purriku is a bottom
+      link: https://purriku.com
   #    category: North Coast
   #  - name: Website
   #    description: The web frontend for the application.
