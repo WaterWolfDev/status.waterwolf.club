@@ -30,6 +30,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: shared
     env:
       HUGO_VERSION: 0.121.0
     steps:
@@ -64,26 +66,21 @@ jobs:
         with:
           path: ./public
 
-  # Deployment job
-  deploy:
-    environment:
-      name: shared
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      # We first log into the Waterwolf AWS security account
+        # We first log into the Waterwolf AWS security account
       - name: Security Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_SECURITY_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
-      # Then we assume a role in whatever account we're deploying to
+
+        # Then we assume a role in whatever account we're deploying to
       - name: Account Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ACCOUNT_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
           role-chaining: true
+
       - name: Copy to S3
         run: |
           aws s3 sync . s3://${{ vars.AWS_BUCKET_NAME }}
