@@ -61,10 +61,6 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"          
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./public
 
         # We first log into the Waterwolf AWS security account
       - name: Security Credentials
@@ -83,4 +79,4 @@ jobs:
 
       - name: Copy to S3
         run: |
-          aws s3 sync . s3://${{ vars.AWS_BUCKET_NAME }}
+          aws s3 sync ./public/* s3://${{ vars.AWS_BUCKET_NAME }}
