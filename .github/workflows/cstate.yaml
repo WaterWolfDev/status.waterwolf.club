@@ -79,4 +79,4 @@ jobs:
 
       - name: Copy to S3
         run: |
-          aws s3 sync ./public/* s3://${{ vars.AWS_BUCKET_NAME }}
+          aws s3 sync ./public s3://${{ vars.AWS_BUCKET_NAME }}
