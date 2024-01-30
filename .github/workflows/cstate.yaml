@@ -1,11 +1,10 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Deploy Hugo site to Pages
+name: Deploy Hugo site to S3
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches:
-      - main
+      - nullreff-s3-deploy
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -68,11 +67,15 @@ jobs:
   # Deployment job
   deploy:
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: shared
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - name: Copy to S3
+        run: |
+          aws s3 sync . s3://${{ vars.AWS_BUCKET_NAME }}
