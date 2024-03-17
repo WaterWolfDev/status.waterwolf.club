@@ -59,8 +59,7 @@ jobs:
         run: |
           hugo \
             --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+            --minify        
 
         # We first log into the Waterwolf AWS security account
       - name: Security Credentials
