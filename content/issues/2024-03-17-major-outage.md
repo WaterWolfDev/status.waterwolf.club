@@ -11,6 +11,7 @@ affected:
   - Relay 3
   - Waterwolf Dev
   - Wolfhub
+  - Purriku.com
 section: issue
 ---
 
