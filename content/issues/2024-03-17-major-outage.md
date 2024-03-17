@@ -9,7 +9,6 @@ affected:
   - Relay 1
   - Relay 2
   - Relay 3
-  - Waterwolf Dev
   - Wolfhub
   - Purriku.com
 section: issue
