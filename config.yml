@@ -97,7 +97,7 @@ defaultContentLanguage: en
 #
 # Broken example:
 # baseUrl: /
-baseURL: https://waterwolf.club
+baseURL: https://status.waterwolf.club
 
 # For features like Last modified, you
 # need to use a Git repository. If you
